@@ -36,3 +36,7 @@ button.secondary {
 .brand-logo {
     width: 50px;
 }
+
+button:hover {
+    background-color: var(--secondary-color);
+  }
