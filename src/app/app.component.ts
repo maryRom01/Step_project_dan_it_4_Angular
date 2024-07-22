@@ -1,14 +1,16 @@
-import { Component, Input } from '@angular/core';
-import { SearchComponent } from './search/search.component';
+import { Component, Input, inject } from '@angular/core';
 import { ListComponent } from './list/list.component';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { Customer } from './customer';
+import { CustomersService } from './customers.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     CommonModule,
-    SearchComponent,
+    RouterModule,
     ListComponent
   ],
   templateUrl: './app.component.html',

@@ -1,9 +1,10 @@
 <main>
-  <header class="brand-name">
-    <img class="brand-logo" src="assets/logo.svg" alt="logo" aria-hidden="true">
-  </header>
+  <a [routerLink]="['/api/v1/customers']">
+    <header class="brand-name">
+      <img class="brand-logo" src="assets/logo.svg" alt="logo" aria-hidden="true">
+    </header>
+  </a>
   <section class="content">
-    <app-search></app-search>
-    <app-list></app-list>
+    <router-outlet></router-outlet>
   </section>
 </main>

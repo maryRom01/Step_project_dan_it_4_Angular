@@ -1,0 +1,29 @@
+.table-title {
+    margin-top: 20px;
+}
+.table {
+  margin-top: 15px;
+  padding: 10px;
+}
+
+table {
+  table-layout: fixed;
+  /* border-collapse: collapse; */
+  width: 100%;
+  border: 1px solid var(--primary-color);
+  border-spacing: 20px;
+  border-radius: 8px;
+}
+
+
+th {
+  text-align: left;
+}
+
+tr {
+  border-bottom: 1px solid var(--primary-color);
+}
+
+td {
+  vertical-align: baseline;
+}

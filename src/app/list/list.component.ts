@@ -1,36 +1,41 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ButtonComponent } from '../button/button.component';
 import { Customer } from '../customer';
+import { CustomersService } from '../customers.service';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-list',
   standalone: true,
   imports: [
     CommonModule,
+    RouterModule,
+    ButtonComponent
   ],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css'
 })
 export class ListComponent {
 
-    customer1: Customer = { 
-        "name": "Customer B",
-        "email": "b@bol.com",
-        "age": 31,
-        "id": 2,
-        "accounts": ""
-      };
+    customersList: Customer[] = [];
+    filteredCustomersList: Customer[] = [];
+    customerService: CustomersService = inject(CustomersService);
 
-    customer2: Customer = {
-        "name": "Customer B",
-        "email": "b2@aol.com",
-        "age": 38,
-        "id": 3,
-        "accounts": ""
+    constructor() {
+      this.customersList = this.customerService.getAllCustomers();
+      this.filteredCustomersList = this.customersList;
+    }
+
+    filterResult(text: string) {
+      console.log(text);
+      if (!text) {
+        this.filteredCustomersList = this.customersList;
+        return;
       }
 
-    customers = [
-        this.customer1,
-        this.customer2
-      ]
+      this.filteredCustomersList = this.customersList.filter(
+        customers => customers?.name.toLowerCase().includes(text.toLowerCase())
+      );
+    }
 };
