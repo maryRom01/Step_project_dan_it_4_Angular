@@ -1,0 +1,84 @@
+{
+    "customers": [
+        {
+            "name": "Customer A",
+            "email": "a@bol.com",
+            "age": 31,
+            "id": 1,
+            "accounts": [
+                {
+                    "id": 1,
+                    "number": "32c9d1c1-dff4-425d-8bd3-00849888066d",
+                    "currency": "EUR",
+                    "balance": 1500.50,
+                    "customerId": 1
+                },
+                {
+                    "id": 2,
+                    "number": "d4776d64-b365-4345-bd6f-349f981fa489",
+                    "currency": "USD",
+                    "balance": 623.0,
+                    "customerId": 1
+                }
+            ]
+        },
+        {
+            "name": "Customer B",
+            "email": "b@bol.com",
+            "age": 31,
+            "id": 2,
+            "accounts": [
+                {
+                    "id": 3,
+                    "number": "33c07238-a825-4af8-ae7d-c496c0f22817",
+                    "currency": "USD",
+                    "balance": 328.50,
+                    "customerId": 2
+                }
+            ]
+        },
+        {
+            "name": "Customer B",
+            "email": "b2@aol.com",
+            "age": 38,
+            "id": 3,
+            "accounts": [
+                {
+                    "id": 4,
+                    "number": "e2c60a66-8a86-4da0-b47b-c42d1dde50eb",
+                    "currency": "EUR",
+                    "balance": 0.0,
+                    "customerId": 3
+                }
+            ]
+        },
+        {
+            "name": "Customer C",
+            "email": "c@aol.com",
+            "age": 77,
+            "id": 4,
+            "accounts": []
+        },
+        {
+            "name": "Customer D",
+            "email": "d@aol.com",
+            "age": 19,
+            "id": 5,
+            "accounts": []
+        },
+        {
+            "name": "Customer E",
+            "email": "e@aol.com",
+            "age": 24,
+            "id": 6,
+            "accounts": []
+        },
+        {
+            "name": "Customer F",
+            "email": "f@aol.com",
+            "age": 65,
+            "id": 7,
+            "accounts": []
+        }
+    ]
+}

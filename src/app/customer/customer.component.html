@@ -8,7 +8,7 @@
                 <th>Email</th>
                 <th>Age</th>
                 <th>Id</th>
-                <th>Accounts</th>
+                <!-- <th>Accounts</th> -->
             </tr>
         </thead>
         <tbody>
@@ -17,10 +17,37 @@
                 <td>{{customer?.email!}}</td>
                 <td>{{customer?.age!}}</td>
                 <td>{{customer?.id!}}</td>
-                <td>{{customer?.accounts!}}</td>
-                <app-button></app-button>
+                <!-- <td *ngFor="let account of customer?.accounts">{{account.id}} {{account.number}} {{account.currency}} {{account.balance}}</td>
+                <app-button></app-button> -->
             </tr>    
         </tbody>
     </table>
+
+    <section>
+        <h3 class="table-title">Accounts</h3>
+    <div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Number</th>
+                <th>Currency</th>
+                <th>Balance</th>
+                <th>Operations</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let account of customer?.accounts">
+                <td>{{account.id}}</td>
+                <td>{{account.number}}</td>
+                <td>{{account.currency}}</td>
+                <td>{{account.balance | number : '.2-2'}}</td>
+                <td><app-button></app-button></td>
+            </tr>    
+        </tbody>
+    </table>
+    </div>
+    </section>
+
 </div>
 </section>

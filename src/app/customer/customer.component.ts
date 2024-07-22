@@ -21,9 +21,13 @@ export class CustomerComponent {
   customer!: Customer | undefined;
 
   constructor() {
-    const customerId = Number(this.route.snapshot.params['id']);
-    console.log(customerId);
-    this.customer = this.customerService.getCustomerById(customerId);
-    console.log(this.customer);
+    // const customerId = Number(this.route.snapshot.params['id']);
+    // console.log(customerId);
+    // this.customer = this.customerService.getCustomerById(customerId);
+    // console.log(this.customer);
+    const customerId = parseInt(this.route.snapshot.params['id'], 10);
+    this.customerService.getCustomerById(customerId).then(customer => {
+      this.customer = customer;
+    });
   }
 }

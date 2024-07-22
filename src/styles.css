@@ -39,4 +39,8 @@ button.secondary {
 
 button:hover {
     background-color: var(--secondary-color);
-  }
+}
+
+td {
+    color: #696969;
+}

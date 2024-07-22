@@ -4,6 +4,7 @@ import { ButtonComponent } from '../button/button.component';
 import { Customer } from '../customer';
 import { CustomersService } from '../customers.service';
 import { Router, RouterModule } from '@angular/router';
+import { Account } from '../account';
 
 @Component({
   selector: 'app-list',
@@ -21,10 +22,13 @@ export class ListComponent {
     customersList: Customer[] = [];
     filteredCustomersList: Customer[] = [];
     customerService: CustomersService = inject(CustomersService);
+    emptyAccounts: Account[] = [];
 
     constructor() {
-      this.customersList = this.customerService.getAllCustomers();
-      this.filteredCustomersList = this.customersList;
+      this.customerService.getAllCustomers().then((customersList: Customer[]) => {
+        this.customersList = customersList;
+        this.filteredCustomersList = this.customersList;
+      });
     }
 
     filterResult(text: string) {

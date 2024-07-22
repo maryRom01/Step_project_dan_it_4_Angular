@@ -5,7 +5,7 @@ import { Customer } from './customer';
   providedIn: 'root'
 })
 export class CustomersService {
-  readonly baseUrl = 'http://localhost:9000/api/v1/customers';
+  readonly baseUrl = 'http://localhost:3000/customers';
 
   protected customersList: Customer[] = [
     { 
@@ -13,26 +13,32 @@ export class CustomersService {
       "email": "a@bol.com",
       "age": 31,
       "id": 2,
-      "accounts": ""
+      "accounts": []
     },
     {
       "name": "Customer B",
       "email": "b2@aol.com",
       "age": 38,
       "id": 3,
-      "accounts": ""
+      "accounts": []
     }
   ]
 
   protected filteredCustomersList: Customer[] = this.customersList;
 
-  getAllCustomers(): Customer[] {
-    console.log(this.customersList);
-    return this.customersList;
+  async getAllCustomers(): Promise<Customer[]> {
+    // console.log(this.customersList);
+    // return this.customersList;
+    const data = await fetch(this.baseUrl);
+    console.log(data);
+    return await data.json() ?? [];
   }
 
-  getCustomerById(id: number): Customer | undefined {
-    return this.customersList.find(customer => customer.id === id);
+  async getCustomerById(id: number): Promise<Customer | undefined> {
+    //return this.customersList.find(customer => customer.id === id);
+    const data = await fetch(`${this.baseUrl}/${id}`);
+    console.log(data);
+    return await data.json() ?? {};
   }
 
   getFilteredCustomers(text: string) {
