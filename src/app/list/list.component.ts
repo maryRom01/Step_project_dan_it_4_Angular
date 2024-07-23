@@ -23,34 +23,26 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllCustomers();
+    console.log(this.customersList);
   }
 
   getAllCustomers():void {
     this.customers2Service.getAllCustomers()
-      .subscribe(customers => this.customersList = customers);
+      .subscribe(customers => {
+        this.customersList = customers;
+        this.filteredCustomersList = customers;
+    });
   }
 
-    // customersList: Customer[] = [];
-    // filteredCustomersList: Customer[] = [];
-    // customerService: CustomersService = inject(CustomersService);
-    // emptyAccounts: Account[] = [];
+    filterResult(text: string) {
+      console.log(text);
+      if (!text) {
+        this.filteredCustomersList = this.customersList;
+        return;
+      }
 
-    // constructor() {
-    //   this.customerService.getAllCustomers().then((customersList: Customer[]) => {
-    //     this.customersList = customersList;
-    //     this.filteredCustomersList = this.customersList;
-    //   });
-    // }
-
-    // filterResult(text: string) {
-    //   console.log(text);
-    //   if (!text) {
-    //     this.filteredCustomersList = this.customersList;
-    //     return;
-    //   }
-
-    //   this.filteredCustomersList = this.customersList.filter(
-    //     customers => customers?.name.toLowerCase().includes(text.toLowerCase())
-    //   );
-    // }
+      this.filteredCustomersList = this.customersList.filter(
+        customers => customers?.name.toLowerCase().includes(text.toLowerCase())
+      );
+    }
 };

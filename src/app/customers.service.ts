@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Customer } from './customer';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -34,12 +35,12 @@ export class CustomersService {
     return await data.json() ?? [];
   }
 
-  async getCustomerById(id: number): Promise<Customer | undefined> {
-    //return this.customersList.find(customer => customer.id === id);
-    const data = await fetch(`${this.baseUrl}/${id}`);
-    console.log(data);
-    return await data.json() ?? {};
-  }
+  // getCustomerById(id: number): Observable<Customer | undefined> {
+  //   //return this.customersList.find(customer => customer.id === id);
+  //   const data = await fetch(`${this.baseUrl}/${id}`);
+  //   console.log(data);
+  //   return await data.json() ?? {};
+  // }
 
   getFilteredCustomers(text: string) {
     if (text) {
