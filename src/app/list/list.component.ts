@@ -1,10 +1,12 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from '../button/button.component';
 import { Customer } from '../customer';
 import { CustomersService } from '../customers.service';
 import { Router, RouterModule } from '@angular/router';
 import { Account } from '../account';
+import { Observable } from 'rxjs';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-list',
@@ -12,23 +14,34 @@ import { Account } from '../account';
   imports: [
     CommonModule,
     RouterModule,
-    ButtonComponent
+    ButtonComponent,
+    HttpClientModule
   ],
+  providers: [],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css'
 })
-export class ListComponent {
+export class ListComponent implements OnInit {
 
     customersList: Customer[] = [];
     filteredCustomersList: Customer[] = [];
-    customerService: CustomersService = inject(CustomersService);
     emptyAccounts: Account[] = [];
 
-    constructor() {
-      this.customerService.getAllCustomers().then((customersList: Customer[]) => {
+    constructor(
+      private customerService: CustomersService
+    ) {}
+
+    ngOnInit(): void {
+      this.getAllCustomers();
+    }
+
+    getAllCustomers(): void {
+      this.customerService.getAllCustomers()
+      .subscribe(customersList => {
         this.customersList = customersList;
-        this.filteredCustomersList = this.customersList;
-      });
+        console.log(this.customersList);
+      }
+      );
     }
 
     filterResult(text: string) {
